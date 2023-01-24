@@ -14,8 +14,21 @@ export const ExpanseForm = props => {
     const onChangeDateHandler = e => {
         setDate(e.target.value);
     }
+    const onSubmitHandler = e => {
+        e.preventDefault();
+        const expanseData = {
+            id: Math.random.toString(),
+            title,
+            amount,
+            date: new Date(dateVal),
+        };
+        setTitle('')
+        setAmount('')
+        setDate('')
+        props.onSaveExpanseData(expanseData);
+    }
     return (
-        <form>
+        <form onSubmit={onSubmitHandler}>
             <div className={classes['new-expense__controls']}>
                 <div className={classes['new-expense__control']}>
                     <label>Title</label>

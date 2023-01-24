@@ -21,11 +21,13 @@ const expenses = [
     date: new Date(2021, 5, 12),
   },
 ];
-
+const onSave = expanseData => {
+  console.log(expanseData);
+}
 function App() {
   return (
     <div>
-      <NewExpanse />
+      <NewExpanse onSave={onSave}/>
       <Expanse items={expenses}/>
     </div>
   );
