@@ -30,7 +30,6 @@ function App() {
     setExpanse((prevData) => {
       return [expanseData, ...prevData]
     });
-    console.log('expenses', expenses)
   }
   
   return (
