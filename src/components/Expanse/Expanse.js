@@ -15,7 +15,7 @@ export const Expanse = props => {
             <ExpanseFilter selected={filteredYear} onChangeFilter={onChangeFilter} />
             {props.items.map(item => (
                 <ExpanseItem
-                key={item.id}
+                    key={item.id}
                     title={item.title}
                     amount={item.amount}
                     date={item.date}

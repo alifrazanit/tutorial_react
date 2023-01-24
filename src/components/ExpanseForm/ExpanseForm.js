@@ -17,7 +17,7 @@ export const ExpanseForm = props => {
     const onSubmitHandler = e => {
         e.preventDefault();
         const expanseData = {
-            id: Math.random.toString(),
+            id: Math.random().toString(),
             title,
             amount,
             date: new Date(dateVal),

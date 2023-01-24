@@ -1,6 +1,7 @@
 import { Expanse } from './components/Expanse/Expanse';
 import { NewExpanse } from './components/NewExpanse/NewExpanse';
-const expenses = [
+import { useState } from 'react';
+const DUMMY = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -21,10 +22,17 @@ const expenses = [
     date: new Date(2021, 5, 12),
   },
 ];
-const onSave = expanseData => {
-  console.log(expanseData);
-}
+
 function App() {
+  const [expenses, setExpanse] = useState(DUMMY);
+
+  const onSave = expanseData => {
+    setExpanse((prevData) => {
+      return [expanseData, ...prevData]
+    });
+    console.log('expenses', expenses)
+  }
+  
   return (
     <div>
       <NewExpanse onSave={onSave}/>
