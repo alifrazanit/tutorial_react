@@ -1,4 +1,4 @@
-import { ExpanseItem } from './components/ExpanseItem/ExpanseItem';
+import { Expanse } from './components/Expanse/Expanse';
 const expenses = [
   {
     id: 'e1',
@@ -23,11 +23,10 @@ const expenses = [
 
 function App() {
   return (
-    <ExpanseItem 
-      title={expenses[0].title}
-      amount={expenses[0].amount}
-      date={expenses[0].date}
-    />
+    <div>
+      <h2>Lets Go</h2>
+      <Expanse items={expenses}/>
+    </div>
   );
 }
 
