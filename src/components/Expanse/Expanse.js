@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Card } from '../Card/Card';
-import { ExpanseFilter } from '../ExpanseFilter/ExpanseFilter';
-import { ExpanseList } from '../ExpanseList/ExpanseList';
+import { ExpanseFilter } from '../Expanse/ExpanseFilter/ExpanseFilter';
+import { ExpanseList } from '../Expanse/ExpanseList/ExpanseList';
 import classes from './Expanse.module.css';
+import { ExpanseChart } from './ExpanseChart/ExpanseChart';
 export const Expanse = props => {
     const [filteredYear, setFilteredYear] = useState('2020');
     const filteredExpanses = props.items.filter((expanse) => {
@@ -15,6 +16,7 @@ export const Expanse = props => {
     return (
         <Card className={classes['expanse']}>
             <ExpanseFilter selected={filteredYear} onChangeFilter={onChangeFilter} />
+            <ExpanseChart expenses={filteredExpanses}/>
             <ExpanseList items={filteredExpanses} />
         </Card>
     )

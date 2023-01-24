@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './ExpanseItem.module.css';
 import { ExpanseDate } from '../ExpanseDate/ExpanseDate';
-import { Card } from '../Card/Card';
+import { Card } from '../../Card/Card';
 export const ExpanseItem = props => {
     const [title, setTitle]=useState(props.title);
     const onChangeTitleHandler = e => {

@@ -1,5 +1,5 @@
 import { Expanse } from './components/Expanse/Expanse';
-import { NewExpanse } from './components/NewExpanse/NewExpanse';
+import { NewExpanse } from './components/Expanse/NewExpanse/NewExpanse';
 import { useState } from 'react';
 const DUMMY = [
   {
