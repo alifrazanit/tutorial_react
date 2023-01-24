@@ -1,4 +1,5 @@
 import { Expanse } from './components/Expanse/Expanse';
+import { NewExpanse } from './components/NewExpanse/NewExpanse';
 const expenses = [
   {
     id: 'e1',
@@ -24,7 +25,7 @@ const expenses = [
 function App() {
   return (
     <div>
-      <h2>Lets Go</h2>
+      <NewExpanse />
       <Expanse items={expenses}/>
     </div>
   );
