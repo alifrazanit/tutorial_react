@@ -7,7 +7,18 @@ export const AddUser = props => {
     const [age, setAge] = useState('')
     const AddUserHandler = event => {
         event.preventDefault();
+        if(username.trim().length === 0 || age.trim().length === 0){
+            return;
+        }
+        if(+age < 0){
+            return;
+        }
         console.log(username, age)
+        props.onAddUser({username, age})
+        
+        setUsername('');
+        setAge('');
+        
     }
     const onChangeUsernameHandler = e => {
         setUsername(e.target.value);
