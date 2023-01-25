@@ -3,7 +3,12 @@ import { Card } from '../UI/Card/Card';
 import classes from './add-user.module.css';
 import { useState } from 'react';
 import { ErrorModal } from '../UI/ErrorModal/ErrorModal';
+import { useRef } from 'react';
 export const AddUser = props => {
+    const usernameRefHandler = useRef();
+    const ageRefHandler = useRef();
+
+    
     const [username, setUsername] = useState('')
     const [age, setAge] = useState('')
     const [isValid, setIsValid] = useState(true);
@@ -24,7 +29,8 @@ export const AddUser = props => {
             return;
         }
         props.onAddUser({ username, age })
-
+        console.log('REF usernameRefHandler', usernameRefHandler.current.value);
+        console.log('REF ageRefHandler', ageRefHandler.current.value);
         setUsername('');
         setAge('');
 
@@ -44,9 +50,9 @@ export const AddUser = props => {
             <Card className={classes['input']}>
                 <form onSubmit={AddUserHandler}>
                     <label htmlFor='username'>Username</label>
-                    <input id='username' type='text' value={username} onChange={onChangeUsernameHandler} />
+                    <input ref={usernameRefHandler} id='username' type='text' value={username} onChange={onChangeUsernameHandler} />
                     <label htmlFor='age'>Age (Years)</label>
-                    <input id='age' type='number' value={age} onChange={onChangeAgeHandler} />
+                    <input ref={ageRefHandler} id='age' type='number' value={age} onChange={onChangeAgeHandler} />
                     <Button type='submit'>Add User</Button>
                 </form>
             </Card>
