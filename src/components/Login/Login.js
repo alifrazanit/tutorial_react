@@ -29,22 +29,26 @@ const Login = (props) => {
   const [passwordState, passwordDispath] = useReducer(passwordReducer, { value: '', isValid: null });
   const [formIsValid, setFormIsValid] = useState(false);
 
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+
+
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setFormIsValid(
-        emailState.value.includes('@') && passwordState.value.trim().length > 6
-      );
+      console.log('emailState', emailState)
+      setFormIsValid(emailState.isValid && passwordState.isValid);
     }, 500)
     return () => {
       clearTimeout(timeout)
     }
-  }, [emailState, passwordState])
+  }, [emailIsValid, passwordIsValid])
 
   const emailChangeHandler = (event) => {
     emailDispatch({
       type: 'USER_INPUT',
       value: event.target.value
-    })
+    });
+    setFormIsValid(event.target.value.includes('@') && passwordState.isValid)
   };
 
   const passwordChangeHandler = (event) => {
@@ -52,6 +56,7 @@ const Login = (props) => {
       type: 'USER_INPUT',
       value: event.target.value
     })
+    setFormIsValid(event.target.value.trim().length > 6 && emailState.isValid)
   };
 
   const validateEmailHandler = () => {
