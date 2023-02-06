@@ -10,7 +10,7 @@ const MainHeader = (props) => {
     <header className={classes['main-header']}>
       { ctx.isLoggedIn && <h1>Berhasil Login</h1>}
       { !ctx.isLoggedIn && <h1>Gagal Login</h1>}
-      <Navigation isLoggedIn={props.isAuthenticated} onLogout={props.onLogout} />
+      <Navigation />
     </header>
   );
 };
