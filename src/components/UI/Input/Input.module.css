@@ -35,11 +35,4 @@
     border-color: red;
     background: #fbdada;
   }
-
-  @media (min-width: 768px) {
-    .control {
-      align-items: center;
-      flex-direction: row;
-    }
   
-  }
