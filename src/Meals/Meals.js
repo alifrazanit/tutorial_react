@@ -1,7 +1,9 @@
+import { AvailableMeals } from "./AvailableMeals/AvailableMeals"
+import { MealsSummary } from "./MealsSummary/MealsSummary"
 import { Fragment } from "react"
-import { AvailableMeals } from "../AvailableMeals/AvailableMeals"
-import { MealsSummary } from "../MealsSummary/MealsSummary"
+import { MealsItems } from "./MealsItems/MealsItems"
 export const Meals = props => {
+
     return (
         <Fragment>
             <MealsSummary />
