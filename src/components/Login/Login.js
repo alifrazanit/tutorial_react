@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useReducer, useContext} from 'react';
+import React, { useState, useEffect, useReducer, useContext, useRef } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
+import { Input } from '../UI/Input/Input';
 import { AuthContext } from '../../store/auth-context';
 
 
@@ -26,6 +27,10 @@ const passwordReducer = (state, action) => {
 }
 
 const Login = (props) => {
+  const emailRef = useRef();
+  const passRef = useRef();
+
+
   const ctx = useContext(AuthContext);
   const [emailState, emailDispatch] = useReducer(emailReducer, { value: '', isValid: null });
   const [passwordState, passwordDispath] = useReducer(passwordReducer, { value: '', isValid: null });
@@ -65,7 +70,7 @@ const Login = (props) => {
   };
 
   const validatePasswordHandler = () => {
-    passwordDispath({ type: 'INPUT_BLUR'})
+    passwordDispath({ type: 'INPUT_BLUR' })
   };
 
   const submitHandler = (event) => {
@@ -81,7 +86,8 @@ const Login = (props) => {
             }`}
         >
           <label htmlFor="email">E-Mail</label>
-          <input
+          <Input
+            ref={emailRef}
             type="email"
             id="email"
             value={emailState.value}
@@ -94,7 +100,8 @@ const Login = (props) => {
             }`}
         >
           <label htmlFor="password">Password</label>
-          <input
+          <Input
+            ref={passRef}
             type="password"
             id="password"
             value={passwordState.value}
