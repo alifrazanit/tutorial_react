@@ -7,7 +7,7 @@ export const Header = props => {
         <Fragment>
             <header className={classes['header']}>
                 <h1>ReactMeals</h1>
-                <HeaderButton/>
+                <HeaderButton onClick={props.onShowCart}/>
             </header>
             <div className={classes['main-image']}>
                 <img src={imgHeader} />

@@ -1,4 +1,4 @@
-import { Card } from '../../../template/Header/Card/Card';
+import { Card } from '../../../template/Card/Card';
 import classes from './AvailableMeals.module.css';
 import { MealItem } from '../MealItem/MealItem';
 const DUMMY_MEALS = [
