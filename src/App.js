@@ -1,8 +1,12 @@
+import { Fragment } from "react";
+import { Meals } from "./pages/Meals/Meals/Meals";
+import { Header } from "./template/Header/Header";
 function App() {
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+    <Fragment>
+      <Header />
+      <Meals/>
+    </Fragment>
   );
 }
 
