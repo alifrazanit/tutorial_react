@@ -29,7 +29,8 @@ const DUMMY_MEALS = [
 ];
 export const AvailableMeals = props => {
     const mealsList = DUMMY_MEALS.map((data) => (
-        <MealItem 
+        <MealItem
+            id={data.id}
             key={data.id}
             name={data.name}
             description={data.description}
