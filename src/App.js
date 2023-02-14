@@ -1,25 +1,22 @@
-import { Header } from "./template/Header/Header";
-import { Fragment } from "react";
-import { Meals } from "./Meals/Meals";
-import { Cart } from "./Cart/Cart";
-import { useState } from "react";
-import { CartProvider } from "./store/cartProvider";
+import React, { useState} from 'react';
+import Button from './components/UI/Button/Button';
+
+import './App.css';
+import DemoOutput from './Demo/DemoOutput';
+
 function App() {
-  const [isShow, setIsShow] = useState(false);
-  const onShowModal = e => {
-    setIsShow(true)
-  }
-  const onClosed = e => {
-    setIsShow(false)
+  const [showParagraph, setShowParagraph] = useState(false);
+  const onClickHandler = e => {
+    e.preventDefault();
+    setShowParagraph((prevShowParagraph) => !prevShowParagraph)
   }
   return (
-    <CartProvider>
-      {isShow && <Cart onClosed={onClosed}/>}
-      <Header onShow={onShowModal}/>
-      <main>
-        <Meals />
-      </main>
-    </CartProvider>
+    <div className="app">
+      <h1>Hi there!</h1>
+      {showParagraph && <p>This is paragraph</p>}
+      <DemoOutput show={false} />
+      <Button onClick={onClickHandler}>Show paragraph</Button>
+    </div>
   );
 }
 
