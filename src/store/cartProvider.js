@@ -29,6 +29,24 @@ const cartReducer = (state, action) => {
             items: updatedItems,
             totalAmount: updateTotalAmount
         }
+    } else if(action.type === 'REMOVE'){
+        const existingItemsIndex = state.items.findIndex(item => item.id === action.item.id);
+        const existingItem = state.items[existingItemsIndex];
+        const updateTotalAmount = state.totalAmount - action.item.price;
+        let updatedItem;
+        let updatedItems;
+
+        if(existingItem.amount === 1){
+            updatedItems = state.items.filter(item => item.id !== action.item.id);
+        } else {
+            updatedItem = {...existingItem, amount: existingItem.amount - 1};
+            updatedItems = [...state.items];
+            updatedItems[existingItemsIndex] = updatedItem;
+        }
+        return {
+            items: updatedItems,
+            totalAmount: updateTotalAmount
+        }
     }
 }
 
@@ -39,8 +57,8 @@ export const CartProvider = props => {
         dispatchAction({ type: 'INPUT', item: item })
     }
 
-    const removeItemHandler = id => {
-        dispatchAction({ type: 'REMOVE', id: id })
+    const removeItemHandler = item => {
+        dispatchAction({ type: 'REMOVE', item: item })
 
     }
     const cartContext = {

@@ -5,9 +5,19 @@ import { CartContext } from '../store/cart-store';
 import { CartItem } from './CartItems/CartItem';
 
 export const Cart = props => {
-    const cartCtx = useContext(CartContext)
-    const cartItemOnRemoveHandler = props => {}
-    const cartItemOnAddHandler = props => {}
+    const cartCtx = useContext(CartContext);
+    
+    const cartItemOnRemoveHandler = item => {
+        cartCtx.removeItem({
+            ...item
+        })
+    }
+    const cartItemOnAddHandler = item => {
+        cartCtx.addItems({
+            ...item,
+            amount: 1
+        })
+    }
     const cartItems = (
         <ul className={classes['cart-items']}>
             {cartCtx.items.map(item => (
@@ -16,7 +26,7 @@ export const Cart = props => {
                     name={item.name}
                     amount={item.amount}
                     price={item.price}
-                    onRemove={cartItemOnRemoveHandler.bind(null, item.id)}
+                    onRemove={cartItemOnRemoveHandler.bind(null, item)}
                     onAdd={cartItemOnAddHandler.bind(null, item)}
                 />
             ))}
