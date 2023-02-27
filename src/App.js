@@ -1,18 +1,26 @@
-import UserFinder from './components/UserFinder';
-import UsersContext from './store/users-context';
-const DUMMY_USERS = [
-  { id: 'u1', name: 'Max' },
-  { id: 'u2', name: 'Manuel' },
-  { id: 'u3', name: 'Julie' },
-];
+import React from 'react';
+import { CommonApi } from './services/Common-Api';
+import MoviesList from './components/MoviesList';
+import './App.css';
+
+
 function App() {
-  const usersContext = {
-    users: DUMMY_USERS
+  function fetchMovieHandler() {
+    
+    // axios.get('https://swapi.dev/api/films/').then(response => {
+    //   console.log('res', response)
+    // })
   }
+  
   return (
-    <UsersContext.Provider value={usersContext}>
-      <UserFinder />
-    </UsersContext.Provider>
+    <React.Fragment>
+      <section>
+        <button onClick={fetchMovieHandler}>Fetch Movies</button>
+      </section>
+      <section>
+        <MoviesList movies={[]} />
+      </section>
+    </React.Fragment>
   );
 }
 
